@@ -6,7 +6,9 @@ import TableHead from "./TableHead";
 class EmployeeTable extends Component {
   state = {
     employees: employees,
-    search: ""
+    search: "",
+    orderBy: "id",
+    order: 1
   };
 
   filterEmployees = () => {
@@ -14,7 +16,7 @@ class EmployeeTable extends Component {
       this.setState({ employees: employees });
     } else {
       const updatedEmployees = employees.filter((employee) =>
-        employee.department.startsWith(this.state.search)
+        employee.email.startsWith(this.state.search)
       );
       this.setState({ employees: updatedEmployees });
     }
@@ -34,8 +36,10 @@ class EmployeeTable extends Component {
   };
 
   sortEmployees = (property) => {
-    let sortedEmployees = this.state.employees.sort((a, b) => ( a[property] > b[property]) ? 1 : -1 )
-    this.setState({employee: sortedEmployees})
+    let order = this.state.order;
+    let reverseOrder = order * (-1);
+    let sortedEmployees = this.state.employees.sort((a, b) => ( a[property] > b[property]) ? order : reverseOrder )
+    this.setState({employee: sortedEmployees, order: reverseOrder, orderBy: property})
   }
 
   render() {
@@ -49,11 +53,11 @@ class EmployeeTable extends Component {
         <table className="table">
           <thead>
             <tr>
-              <TableHead scope="col" value="ID" name="id" sortEmployees={this.sortEmployees}/>
-              <TableHead scope="col" value="First Name" name="firstName" sortEmployees={this.sortEmployees}/>
-              <TableHead scope="col" value="Last Name" name="lastName" sortEmployees={this.sortEmployees}/>
-              <TableHead scope="col" value="Email" name="email" sortEmployees={this.sortEmployees}/>
-              <TableHead scope="col" value="Department" name="department" sortEmployees={this.sortEmployees}/>
+              <TableHead scope="col" orderBy={this.state.orderBy} value="ID" name="id" sortEmployees={this.sortEmployees}/>
+              <TableHead scope="col" orderBy={this.state.orderBy} value="First Name" name="firstName" sortEmployees={this.sortEmployees}/>
+              <TableHead scope="col" orderBy={this.state.orderBy} value="Last Name" name="lastName" sortEmployees={this.sortEmployees}/>
+              <TableHead scope="col" orderBy={this.state.orderBy} value="Email" name="email" sortEmployees={this.sortEmployees}/>
+              <TableHead scope="col" orderBy={this.state.orderBy} value="Department" name="department" sortEmployees={this.sortEmployees}/>
             </tr>
           </thead>
           <tbody>

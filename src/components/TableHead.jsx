@@ -10,6 +10,7 @@ const TableHead = (props) => {
           event.persist();
           props.sortEmployees(props.name);
         }}
+        className={props.name === props.orderBy ? "orderBy" : ""}
       >
         {props.value}
       </th>

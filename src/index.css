@@ -8,3 +8,11 @@ html, body, #root {
   margin: 0;
   height: 100%;
 }
+
+.orderBy{
+  background-color: #2A77AE;
+  color: white
+}
+ th:hover{
+   background-color: rgb(95, 193, 226);
+ }
