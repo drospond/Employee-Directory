@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import employees from "../employees.json";
 
 class EmployeeTable extends Component {
+  state = {
+    employees: employees,
+  };
+
   render() {
     return (
       <table class="table">
@@ -14,27 +19,19 @@ class EmployeeTable extends Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>test1@mdo.com</td>
-            <td>Hardware</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>test2@fat.com</td>
-            <td>Hardware</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>test3@twitter.com</td>
-            <td>Plumbing</td>
-          </tr>
+          {this.state.employees.map(
+            ({ id, firstName, lastName, email, department }) => {
+              return (
+                <tr>
+                  <th scope="row">{id}</th>
+                  <td>{firstName}</td>
+                  <td>{lastName}</td>
+                  <td>{email}</td>
+                  <td>{department}</td>
+                </tr>
+              );
+            }
+          )}
         </tbody>
       </table>
     );
