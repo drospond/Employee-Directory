@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import employees from "../employees.json";
 import SearchForm from "./SearchForm";
+import TableHead from "./TableHead";
 
 class EmployeeTable extends Component {
   state = {
     employees: employees,
-    search: "",
+    search: ""
   };
 
-  filterEmployees = (id) => {
+  filterEmployees = () => {
     if (this.state.search === "") {
       this.setState({ employees: employees });
     } else {
@@ -32,6 +33,11 @@ class EmployeeTable extends Component {
     event.preventDefault();
   };
 
+  sortEmployees = (property) => {
+    let sortedEmployees = this.state.employees.sort((a, b) => ( a[property] > b[property]) ? 1 : -1 )
+    this.setState({employee: sortedEmployees})
+  }
+
   render() {
     return (
       <>
@@ -40,14 +46,14 @@ class EmployeeTable extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Department</th>
+              <TableHead scope="col" value="ID" name="id" sortEmployees={this.sortEmployees}/>
+              <TableHead scope="col" value="First Name" name="firstName" sortEmployees={this.sortEmployees}/>
+              <TableHead scope="col" value="Last Name" name="lastName" sortEmployees={this.sortEmployees}/>
+              <TableHead scope="col" value="Email" name="email" sortEmployees={this.sortEmployees}/>
+              <TableHead scope="col" value="Department" name="department" sortEmployees={this.sortEmployees}/>
             </tr>
           </thead>
           <tbody>
