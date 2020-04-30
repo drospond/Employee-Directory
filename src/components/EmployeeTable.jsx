@@ -8,15 +8,26 @@ class EmployeeTable extends Component {
     search: "",
   };
 
+  filterEmployees = (id) => {
+    if (this.state.search === "") {
+      this.setState({ employees: employees });
+    } else {
+      const updatedEmployees = employees.filter((employee) =>
+        employee.department.startsWith(this.state.search)
+      );
+      this.setState({ employees: updatedEmployees });
+    }
+  };
+
   handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
       [name]: value,
     });
+    setTimeout(() => {this.filterEmployees()}, 500);
   };
 
-  // When the form is submitted, search the Giphy API for `this.state.search`
   handleFormSubmit = (event) => {
     event.preventDefault();
   };
