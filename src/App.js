@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import FriendCard from "./components/FriendCard";
-import Title from "./components/Title";
+import Title from "./components/title.jsx";
 import employees from "./employees.json";
 import EmployeeTable from "./components/EmployeeTable";
 
