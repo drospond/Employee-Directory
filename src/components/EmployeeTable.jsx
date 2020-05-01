@@ -6,6 +6,7 @@ import TableHead from "./TableHead";
 class EmployeeTable extends Component {
   state = {
     employees: employees,
+    searchFor: "id",
     search: "",
     orderBy: "id",
     order: 1
@@ -16,11 +17,19 @@ class EmployeeTable extends Component {
       this.setState({ employees: employees });
     } else {
       const updatedEmployees = employees.filter((employee) =>
-        employee.email.startsWith(this.state.search)
+        employee[this.state.searchFor].toString().includes(this.state.search)
       );
       this.setState({ employees: updatedEmployees });
     }
   };
+
+  setSearchFor = (event) => {
+    console.log(event.target.options[event.target.selectedIndex].value)
+    const value = event.target.options[event.target.selectedIndex].value;
+    this.setState({
+        searchFor: value
+    })
+  }
 
   handleInputChange = (event) => {
     const name = event.target.name;
@@ -29,10 +38,6 @@ class EmployeeTable extends Component {
       [name]: value,
     });
     setTimeout(() => {this.filterEmployees()}, 500);
-  };
-
-  handleFormSubmit = (event) => {
-    event.preventDefault();
   };
 
   sortEmployees = (property) => {
@@ -47,8 +52,10 @@ class EmployeeTable extends Component {
       <>
         <SearchForm
           search={this.state.search}
+          searchFor={this.state.searchFor}
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
+          setSearchFor={this.setSearchFor}
         />
         <table className="table">
           <thead>
