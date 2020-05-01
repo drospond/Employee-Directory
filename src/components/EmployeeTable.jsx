@@ -34,7 +34,7 @@ class EmployeeTable extends Component {
         id++
         return newEmployeeObject
       })
-      setTimeout(this.setState({ employees: employees, filteredEmployees: employees }), 2000);
+      this.setState({ employees: employees, filteredEmployees: employees });
     })
     .catch(err => console.log(err));
   }
