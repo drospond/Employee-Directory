@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-// import employees from "../employees.json";
 import SearchForm from "./SearchForm";
 import TableHead from "./TableHead";
 import axios from "axios"
 
 class EmployeeTable extends Component {
   state = {
-    // employees: employees,
     employees: [],
     filteredEmployees: [],
     searchFor: "id",
@@ -58,6 +56,7 @@ class EmployeeTable extends Component {
     })
   }
 
+  //not reusable because of filterEmployees functional. fix later
   handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
