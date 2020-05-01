@@ -16,3 +16,7 @@ html, body, #root {
  th:hover{
    background-color: rgb(95, 193, 226);
  }
+
+ select{
+   margin-left: 15px;
+ }

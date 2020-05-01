@@ -3,9 +3,15 @@ import React from "react";
 
 function SearchForm(props) {
   return (
-    <form>
       <div className="form-group">
-        <label htmlFor="search">Filter by email:</label>
+        <label htmlFor="search">Filter by: 
+          <select id="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </label>
         <input
           onChange={props.handleInputChange}
           value={props.search}
@@ -16,7 +22,6 @@ function SearchForm(props) {
           id="search"
         />
       </div>
-    </form>
   );
 }
 
