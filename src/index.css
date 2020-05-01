@@ -3,10 +3,24 @@
   font-family: sans-serif;
 }
 
+body{
+  background-color: lightgray;
+}
+
 html, body, #root {
   padding: 0;
   margin: 0;
   height: 100%;
+}
+
+label{
+  font-weight: bold;
+}
+
+.form-group{
+  width: 100%;
+  text-align: center;
+  display: inline-block;
 }
 
 .orderBy{
@@ -17,8 +31,13 @@ html, body, #root {
    background-color: rgb(95, 193, 226);
  }
 
+ .table{
+   background-color: white;
+ }
+
  select{
    margin-left: 15px;
+   border-radius: .25rem;
  }
 
  .title {
@@ -26,6 +45,16 @@ html, body, #root {
   text-align: center;
   font-size: 3rem;
   text-decoration: underline;
-  color: #2A77AE;
-  margin-bottom: 50px;
+  color: white;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: #2A77AE;
+}
+
+#search{
+  width: 25%;
+  margin-left: 25px;
+  display: inline-block;
+  padding: 2px;
 }

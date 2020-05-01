@@ -18,14 +18,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="col">
-          <div className="row">
-            <Title>Employees Table</Title>
-            <EmployeeTable />
+      <>
+        <Title>Employees Table</Title>
+        <div className="container">
+          <div className="col">
+            <div className="row">
+              <EmployeeTable />
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
