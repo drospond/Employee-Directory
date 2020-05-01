@@ -10,7 +10,7 @@ function SearchForm(props) {
             <option value="firstName">First Name</option>
             <option value="lastName">Last Name</option>
             <option value="email">Email</option>
-            <option value="department">Department</option>
+            <option value="phone">Phone</option>
           </select>
         </label>
         <input
